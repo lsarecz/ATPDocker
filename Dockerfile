@@ -31,7 +31,7 @@ RUN LIBS="*/libociei.so */libons.so */libnnz12.so */libclntshcore.so.12.1 */libc
     rm ${CLIENT_FILENAME}
 
 # get node app from git repo
-RUN git clone https://github.com/kbhanush/ATPDocker
+RUN git clone https://github.com/cloudsolutionhubs/ATPDocker.git
 RUN mkdir wallet_NODEAPPDB2
 COPY ./wallet_NODEAPPDB2 ./wallet_NODEAPPDB2
 

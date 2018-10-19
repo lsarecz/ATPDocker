@@ -13,13 +13,13 @@ RUN apk add --update \
    && rm -rf /var/cache/apk/*
 
 # get oracle instant client from bumpx git repo
-ENV CLIENT_FILENAME instantclient-basic-linux.x64-12.1.0.1.0.zip
+ENV CLIENT_FILENAME instantclient-basic-linux.x64-12.1.0.2.0.zip
 
 # set working directory
 WORKDIR /opt/oracle/lib
 
 # download instant client zip file from git repo
-ADD https://github.com/bumpx/oracle-instantclient/raw/master/${CLIENT_FILENAME} .
+ADD ${CLIENT_FILENAME} .
 
 
 

@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  File created - Monday-August-10-2015
+--  File created - Monday-August-10-2015   
 --------------------------------------------------------
 
 --------------------------------------------------------
@@ -27,48 +27,48 @@
 --  DDL for Table COMMENTS
 --------------------------------------------------------
 
-  CREATE TABLE "COMMENTS"
-   (  "COMMENT_ID" NUMBER(10,0),
-  "ITEM_ID" NUMBER(10,0),
-  "COMMENT_BY" NUMBER(10,0),
-  "COMMENT_CREATE_DATE" DATE DEFAULT sysdate,
+  CREATE TABLE "COMMENTS" 
+   (  "COMMENT_ID" NUMBER(10,0), 
+  "ITEM_ID" NUMBER(10,0), 
+  "COMMENT_BY" NUMBER(10,0), 
+  "COMMENT_CREATE_DATE" DATE DEFAULT sysdate, 
   "COMMENT_TEXT" VARCHAR2(500)
    ) ;
 --------------------------------------------------------
 --  DDL for Table ITEMS
 --------------------------------------------------------
 
-  CREATE TABLE "ITEMS"
-   (  "ITEM_ID" NUMBER(10,0),
-  "ITEM_TITLE" VARCHAR2(100),
-  "ITEM_DESC" VARCHAR2(2000),
-  "ITEM_POST_DATE" DATE DEFAULT sysdate,
-  "ITEM_POSTED_BY" NUMBER(10,0),
-  "ITEM_BOUGHT_BY" NUMBER(10,0),
-  "ITEM_PRICE" NUMBER(4,0),
+  CREATE TABLE "ITEMS" 
+   (  "ITEM_ID" NUMBER(10,0), 
+  "ITEM_TITLE" VARCHAR2(100), 
+  "ITEM_DESC" VARCHAR2(2000), 
+  "ITEM_POST_DATE" DATE DEFAULT sysdate, 
+  "ITEM_POSTED_BY" NUMBER(10,0), 
+  "ITEM_BOUGHT_BY" NUMBER(10,0), 
+  "ITEM_PRICE" NUMBER(4,0), 
   "ITEM_STATUS" VARCHAR2(25)
    ) ;
 --------------------------------------------------------
 --  DDL for Table OFFERS
 --------------------------------------------------------
 
-  CREATE TABLE "OFFERS"
-   (  "OFFER_ID" NUMBER(10,0),
-  "ITEM_ID" NUMBER(10,0),
-  "OFFER_BY" NUMBER(10,0),
-  "OFFER_AMOUNT" NUMBER(10,0),
-  "OFFER_CREATE_DATE" DATE DEFAULT SYSDATE,
+  CREATE TABLE "OFFERS" 
+   (  "OFFER_ID" NUMBER(10,0), 
+  "ITEM_ID" NUMBER(10,0), 
+  "OFFER_BY" NUMBER(10,0), 
+  "OFFER_AMOUNT" NUMBER(10,0), 
+  "OFFER_CREATE_DATE" DATE DEFAULT SYSDATE, 
   "OFFER_STATUS" VARCHAR2(15)
    ) ;
 --------------------------------------------------------
 --  DDL for Table USERS
 --------------------------------------------------------
 
-  CREATE TABLE "USERS"
-   (  "USER_ID" NUMBER(10,0),
-  "USER_NAME" VARCHAR2(50),
-  "USER_PASSWORD" VARCHAR2(50),
-  "USER_EMAIL" VARCHAR2(50),
+  CREATE TABLE "USERS" 
+   (  "USER_ID" NUMBER(10,0), 
+  "USER_NAME" VARCHAR2(50), 
+  "USER_PASSWORD" VARCHAR2(50), 
+  "USER_EMAIL" VARCHAR2(50), 
   "USER_GRAVATAR" VARCHAR2(500)
    ) ;
 REM INSERTING into COMMENTS
@@ -96,23 +96,157 @@ Insert into COMMENTS (COMMENT_ID,ITEM_ID,COMMENT_BY,COMMENT_CREATE_DATE,COMMENT_
 Insert into COMMENTS (COMMENT_ID,ITEM_ID,COMMENT_BY,COMMENT_CREATE_DATE,COMMENT_TEXT) values (61,41,4,to_date('20-JUL-15','DD-MON-RR'),'Hey Im putting an offer for this. let me know');
 REM INSERTING into ITEMS
 SET DEFINE OFF;
-Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (8,'Italian Antique Hand-Painted Porcelain Trinket Boxes','Antique hand-painted porcelain trinket boxes with hinged lids, purchased in 1985 at the Clignancourt Flea Market in Paris, mint condition, $75 each',to_date('09-JUL-15','DD-MON-RR'),6,null,70,'cancelled');
-Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (2,'Pool tables, 1" Slate, Real Wood, NO MDF','Key Features:',to_date('09-JUL-15','DD-MON-RR'),4,null,1450,'available');
+Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (8,'Italian Antique Hand-Painted Porcelain Trinket Boxes','Antique hand-painted porcelain trinket boxes with hinged lids, purchased in 1985 at the Clignancourt Flea Market in Paris, mint condition, $75 each 
+2 inch square with gilt floral design
+1.75 inch diameter says FORCE and SAGESSE
+
+Salmon Size 34 SNS Profeil cross country ski boots
+
+Fit Karbu 130cm cross country skis
+
+70 cm cross country skis',to_date('09-JUL-15','DD-MON-RR'),6,null,70,'cancelled');
+Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (2,'Pool tables, 1" Slate, Real Wood, NO MDF','Key Features:
+Table Size: 7'' and 8'' regulation sizes
+Frame: 100% Real Wood (NO Plywood, MDF or OSB)
+Legs: 100% Real Wood (NO Plywood, MDF or OSB)
+Rails: 100% Real Wood (NO Plywood, MDF or OSB)
+Side 100% Real Wood (NO Plywood, MDF or OSB)
+Slate: 1" Slate, Diamond Honed, Matched (Solid Wood Backed) 
+Pocket Size: Meets BCA Specifications
+Pockets: 100% Leather (NO SYNTHETIC)
+Rail Sights: Mother Pearl
+Cushions: 100% Gum Cushions K66 (No Fillers)
+Felt: 21oz Felt (Upgrade to Championship)
+Table Guarantee: 5 year Manufacture Warranty (See web site for details)
+Installation Guarantee: No payment due until you are 100% happy with the table.',to_date('09-JUL-15','DD-MON-RR'),4,null,1450,'available');
 Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (3,'2 pack tennis rackets','got some tennis rackets but they were not at a professional standard. still at great quality and awesome for anyone who wants to start playing tennis',to_date('09-JUL-15','DD-MON-RR'),4,null,50,'sold');
 Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (21,'Pool table','My pool table for sale',to_date('12-JUL-15','DD-MON-RR'),4,null,100,'sold');
 Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (22,'Used macbook','MBP 15 in retina 2012 model in great condition',to_date('12-JUL-15','DD-MON-RR'),7,null,1650,'available');
 Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (61,'Bicycle','My Schwinn Bike is ready to go',to_date('04-AUG-15','DD-MON-RR'),81,null,100,'sold');
-Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (7,'White Alabaster Egg (mint condition)','White alabaster egg, approximately 3 inches long, mint condition, $5',to_date('09-JUL-15','DD-MON-RR'),5,null,5,'available');
-Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (9,'Garden Tool Organizer / Bicycle Storage Rack - 36"','Are you tired of tripping over a bunch of loose garden tools in your garage? Are your brooms, rakes, shovels, bicycles etc. always in a big cluttered mess? As a machine shop owner, I make a really nice, possibly the best, Garage Organizer - Garden Tool - Bicycle Storage Rack, where you can neatly hang these items.',to_date('09-JUL-15','DD-MON-RR'),7,null,89,'available');
-Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (10,'***2004 Yamaha R6 Motorcycle*** clean title***','For sale a clean 2004 Yamaha R6 factory blue with 27k commuting miles. Clean title in hand and current registration. Excellent condition. A few minor mods liked front signals, rear eliminator kit, integrated taillight, a rear solo seat cowl and frame sliders. All service up to date. Nothing is needed.',to_date('09-JUL-15','DD-MON-RR'),8,null,3600,'sold');
-Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (12,'VOX Standard 24 Guitar- Made in Japan','This is a Vox Standard 24 3503, made some time between 1979 and 82. It works great and holds it''s tuning, but it shows its wear. Consistent with it''s age, this guitar has lots of dings, impressions, edge chipping, scratches and swirling (Pictures provided). ',to_date('09-JUL-15','DD-MON-RR'),10,null,500,'available');
-Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (5,'Kinetic by Kurt Road Machine Indoor Bicycle Trainer','Kinetic by Kurt Road Machine Indoor Bicycle Trainer and front wheel stand.',to_date('09-JUL-15','DD-MON-RR'),1,null,200,'sold');
-Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (6,'Cross Country Ski Boots and Skis','Kinetic by Kurt Road Machine Indoor Bicycle Trainer and rear wheel stand.',to_date('09-JUL-15','DD-MON-RR'),4,null,20,'available');
-Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (11,'1940''s Noritake Japan China Set','1940''s Noritake Japan China Set',to_date('09-JUL-15','DD-MON-RR'),9,null,150,'sold');
+Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (7,'White Alabaster Egg (mint condition)','White alabaster egg, approximately 3 inches long, mint condition, $5
+
+Salmon Size 34 SNS Profeil cross country ski boots
+
+Fit Karbu 130cm cross country skis
+
+70 cm cross country skis',to_date('09-JUL-15','DD-MON-RR'),5,null,5,'available');
+Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (9,'Garden Tool Organizer / Bicycle Storage Rack - 36"','Are you tired of tripping over a bunch of loose garden tools in your garage? Are your brooms, rakes, shovels, bicycles etc. always in a big cluttered mess? As a machine shop owner, I make a really nice, possibly the best, Garage Organizer - Garden Tool - Bicycle Storage Rack, where you can neatly hang these items.
+
+**** My Design:
+
+* Is very strong and holds many clumsy things, like garden tools and bicycles, in a tight place. 
+* Is a very simple design, adjustable to fit many different items. 
+* Doesn''t take up any valuable floor space.
+* Bicycles can be hung parallel or perpendicular to the wall.
+* Includes many large Straight Hooks and two styles of Rubber Padded Bicycle Hook.
+* Long, tempered, Torx wood screws that will line up with every wall stud, with or without sheetrock.
+* Made from solid aluminum bar stock, threaded steel rod, nuts, washers, high quality tempered steel wood screws and machined aluminum screw adapters. 
+* Includes a magnet to find wall studs, a Torx screw bit, eye screws for the ends of your wooden tool 
+handles, and easy instructions.
+
+**** Here''s what you will receive: 
+
+36" Tool Rack Kit - $89.00
+* One 36" aluminum beam with 36 threaded holes 
+* Six 12" hooks with nuts and washers 
+* Four 8" hooks with nuts and washers
+* Two styles of Rubber Padded Bicycle Hook with nuts and washers 
+* Four 2 1/2" wood screws with adapters
+* One Torx bit to fit the wood screws
+* One stud finder magnet
+* Six eye screws
+* Instructions
+
+$89.00 is a cash price for Santa Clara pick up. Reply with your phone number. 
+I have this and 2 other larger sizes, extra hooks, more pictures, and better description on eBay.
+Do an eBay search for item # 161667038684
+
+Salmon Size 34 SNS Profeil cross country ski boots
+
+Fit Karbu 130cm cross country skis
+
+70 cm cross country skis',to_date('09-JUL-15','DD-MON-RR'),7,null,89,'available');
+Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (10,'***2004 Yamaha R6 Motorcycle*** clean title***','For sale a clean 2004 Yamaha R6 factory blue with 27k commuting miles. Clean title in hand and current registration. Excellent condition. A few minor mods liked front signals, rear eliminator kit, integrated taillight, a rear solo seat cowl and frame sliders. All service up to date. Nothing is needed.
+
+
+price: $3600 firm 
+email if interested and I will call you back asap. thx.
+
+Salmon Size 34 SNS Profeil cross country ski boots
+
+Fit Karbu 130cm cross country skis
+
+70 cm cross country skis',to_date('09-JUL-15','DD-MON-RR'),8,null,3600,'sold');
+Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (12,'VOX Standard 24 Guitar- Made in Japan','This is a Vox Standard 24 3503, made some time between 1979 and 82. It works great and holds it''s tuning, but it shows its wear. Consistent with it''s age, this guitar has lots of dings, impressions, edge chipping, scratches and swirling (Pictures provided). 
+A workhorse.
+I love it, but I am changing my sound. 
+I have owned this VOX for about five years and it has been my personal electric guitar at the studio, a non smoker environment.
+
+The serial number is 2010313. These were manufactured in Japan at the Matsumoku factory during the golden era of Japanese guitars. 
+
+The frets are in good condition, showing light wear. 
+
+The Dimarzio Super Distortion Humbuckers make this machine very powerful, crunchy and aggressive in a very "1970''s" Classic or Glam rock kind of way. 
+
+Additional specs:
+Standard 24 Black - 3503
+Black polyester finish
+24 3/4 inch scale length
+Fixed neck construction; twinDiMarzio
+Super Distortion Humbuckers
+Body and neck from selected Nato timber
+Individual smooth machine heads
+Volume and tone controls for each pickup
+Three way pickup selector
+
+Included is a case that fits the Vox perfectly. It looks used on the outside, but it is a tank. The locks show some rust, but they work perfectly. I mean, these lock precisely AND the case comes with it''s original key. The case lid opens to just past 90 degrees and stays there. The lines are straight and solid. I originally wanted to keep it, but it fits the Vox perfectly and matches it''s age and quality of build so I am selling them together. 
+Local pick up only. Price is FIRM. Cash only and you must bring your own amp to test it so you know what it sounds like though something you already know. Right?
+Salmon Size 34 SNS Profeil cross country ski boots
+
+Fit Karbu 130cm cross country skis
+
+70 cm cross country skis',to_date('09-JUL-15','DD-MON-RR'),10,null,500,'available');
+Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (5,'Kinetic by Kurt Road Machine Indoor Bicycle Trainer','Kinetic by Kurt Road Machine Indoor Bicycle Trainer and front wheel stand.
+
+Used 2 times for about 30 mins each time. 
+
+Retail price is $379.
+
+I am also selling the pictured Giant OCRc2 if interested.',to_date('09-JUL-15','DD-MON-RR'),1,null,200,'sold');
+Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (6,'Cross Country Ski Boots and Skis','Kinetic by Kurt Road Machine Indoor Bicycle Trainer and rear wheel stand.
+
+Used 2 times for about 30 mins each time. 
+
+Retail price is $379.
+
+Salmon Size 34 SNS Profeil cross country ski boots
+
+Fit Karbu 130cm cross country skis
+
+70 cm cross country skis',to_date('09-JUL-15','DD-MON-RR'),4,null,20,'available');
+Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (11,'1940''s Noritake Japan China Set','1940''s Noritake Japan China Set
+Lynns of Alameda
+2807 Encinal Ave.
+Alameda
+
+Salmon Size 34 SNS Profeil cross country ski boots
+
+Fit Karbu 130cm cross country skis
+
+70 cm cross country skis',to_date('09-JUL-15','DD-MON-RR'),9,null,150,'sold');
 Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (41,'Samsung galaxy s6 active','I''m trying to sell or trade my galaxy s5 active, I would trade for a video game system or I would just sell it straight out. Serious inquiries only.',to_date('13-JUL-15','DD-MON-RR'),12,null,255,'sold');
 Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (4,'unboxed iphone 6','Recd it as a birthday gift from my uncle but I already have a phone so don''t need this. Unboxed with recpt',to_date('09-JUL-15','DD-MON-RR'),3,null,600,'available');
 Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (13,'Guitar','My used guitar',to_date('09-JUL-15','DD-MON-RR'),11,null,100,'available');
-Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (1,'2015 Star 36v golf cart...barely used','Features include:',to_date('09-JUL-15','DD-MON-RR'),2,null,5650,'available');
+Insert into ITEMS (ITEM_ID,ITEM_TITLE,ITEM_DESC,ITEM_POST_DATE,ITEM_POSTED_BY,ITEM_BOUGHT_BY,ITEM_PRICE,ITEM_STATUS) values (1,'2015 Star 36v golf cart...barely used','Features include:
+Street legal light kit which includes- head and tail lights, turn signals, brake lights, horn, and hazards
+Tinted folding windshield
+Folding side mirrors
+10??? polished aluminum wheels
+Low / high speed switch (runs up to 20 mph in high)
+Battery state of charge meter
+Side panels
+Back seat that folds to diamond plate flat bed
+Rear safety grab bar',to_date('09-JUL-15','DD-MON-RR'),2,null,5650,'available');
 REM INSERTING into OFFERS
 SET DEFINE OFF;
 Insert into OFFERS (OFFER_ID,ITEM_ID,OFFER_BY,OFFER_AMOUNT,OFFER_CREATE_DATE,OFFER_STATUS) values (3,10,10,3000,null,null);
@@ -191,7 +325,7 @@ Insert into USERS (USER_ID,USER_NAME,USER_PASSWORD,USER_EMAIL,USER_GRAVATAR) val
 --  DDL for Trigger COMMENTS_COMMENT_ID_TRIGGER
 --------------------------------------------------------
 
-  CREATE OR REPLACE TRIGGER "COMMENTS_COMMENT_ID_TRIGGER"
+  CREATE OR REPLACE TRIGGER "COMMENTS_COMMENT_ID_TRIGGER" 
    before insert on comments
    for each row
 begin
@@ -206,7 +340,7 @@ ALTER TRIGGER "COMMENTS_COMMENT_ID_TRIGGER" ENABLE;
 --  DDL for Trigger ITEMS_ITEM_ID_TRIGGER
 --------------------------------------------------------
 
-  CREATE OR REPLACE TRIGGER "ITEMS_ITEM_ID_TRIGGER"
+  CREATE OR REPLACE TRIGGER "ITEMS_ITEM_ID_TRIGGER" 
    before insert on ITEMS
    for each row
 begin
@@ -221,7 +355,7 @@ ALTER TRIGGER "ITEMS_ITEM_ID_TRIGGER" ENABLE;
 --  DDL for Trigger OFFERS_OFFER_ID_TRIGGER
 --------------------------------------------------------
 
-  CREATE OR REPLACE TRIGGER "OFFERS_OFFER_ID_TRIGGER"
+  CREATE OR REPLACE TRIGGER "OFFERS_OFFER_ID_TRIGGER" 
    before insert on OFFERS
    for each row
 begin
@@ -236,7 +370,7 @@ ALTER TRIGGER "OFFERS_OFFER_ID_TRIGGER" ENABLE;
 --  DDL for Trigger USERS_USER_ID_TRIGGER
 --------------------------------------------------------
 
-  CREATE OR REPLACE TRIGGER "USERS_USER_ID_TRIGGER"
+  CREATE OR REPLACE TRIGGER "USERS_USER_ID_TRIGGER" 
    before insert on users
    for each row
 begin

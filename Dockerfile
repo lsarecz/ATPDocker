@@ -1,4 +1,6 @@
-FROM frolvlad/alpine-glibc:alpine-3.8
+FROM frolvlad/alpine-glibc:alpine-3.8 
+
+RUN echo -e "http://uk.alpinelinux.org/alpine/v3.8/main\nhttp://uk.alpinelinux.org/alpine/v3.8/community" > /etc/apk/repositories
 
 # update base image and download required glibc libraries
 RUN apk update && apk add libaio libnsl && \

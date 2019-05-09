@@ -1,4 +1,18 @@
-FROM janleemans/alpineforatp:latest
+FROM frolvlad/alpine-glibc:alpine-3.8 
+
+RUN echo -e "http://uk.alpinelinux.org/alpine/v3.8/main\nhttp://uk.alpinelinux.org/alpine/v3.8/community" > /etc/apk/repositories
+
+# update base image and download required glibc libraries
+RUN apk update && apk add libaio libnsl && \
+    ln -s /usr/lib/libnsl.so.2 /usr/lib/libnsl.so.1
+
+#install node, git, python and cleanup cache
+RUN apk add --update \
+    nodejs \
+    nodejs-npm \
+    git \
+    python \
+   && rm -rf /var/cache/apk/*
 
 # get oracle instant client
 ENV CLIENT_FILENAME instantclient-basic-linux.x64-12.1.0.2.0.zip
@@ -15,7 +29,7 @@ RUN LIBS="libociei.so libons.so libnnz12.so libclntshcore.so.12.1 libclntsh.so.1
     unzip ${CLIENT_FILENAME} && \
     cd instantclient_12_1 && \
     for lib in ${LIBS}; do cp ${lib} /usr/lib; done && \
-    ln -s /usr/lib/libclntsh.so.12.1 /usr/lib/libclntsh.so
+    ln -s /usr/lib/libclntsh.so.12.1 /usr/lib/libclntsh.so 
     # rm ${CLIENT_FILENAME}
 
 # get node app from git repo

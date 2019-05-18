@@ -1,42 +1,20 @@
-FROM janleemans/alpineforatp:latest
-
-# get oracle instant client
-ENV CLIENT_FILENAME instantclient-basic-linux.x64-12.1.0.2.0.zip
+FROM janleemans/alpine2atp:latest
 
 # set working directory
 WORKDIR /opt/oracle/lib
 
-# Add instant client zip file
-ADD ${CLIENT_FILENAME} .
+# Workaround to use image alpine2atp which already has DB libs installed
+RUN mkdir tmp_mods
+RUN mv ./ATPDocker/aone/node_modules ./tmp_mods
 
-
-# unzip required libs, unzip instant client and create sim links
-RUN LIBS="libociei.so libons.so libnnz12.so libclntshcore.so.12.1 libclntsh.so.12.1" && \
-    unzip ${CLIENT_FILENAME} && \
-    cd instantclient_12_1 && \
-    for lib in ${LIBS}; do cp ${lib} /usr/lib; done && \
-    ln -s /usr/lib/libclntsh.so.12.1 /usr/lib/libclntsh.so
-    # rm ${CLIENT_FILENAME}
-
-# get node app from git repo
-# RUN git clone https://github.com/cloudsolutionhubs/ATPDocker.git
-
-RUN mkdir ATPDocker
+# Copy latest version of aone into image
 COPY ./aone ./ATPDocker/aone
-COPY ./node_modules ./ATPDocker/node_modules
 
+# Replace db libs in aone
+RUN mv  ./tmp_mods/node_modules ./ATPDocker/aone
 
 RUN mkdir wallet_NODEAPPDB2
 COPY ./wallet_NODEAPPDB2 ./wallet_NODEAPPDB2
 
-#set env variables
-ENV ORACLE_BASE /opt/oracle/lib/instantclient_12_1
-ENV LD_LIBRARY_PATH /opt/oracle/lib/instantclient_12_1
-ENV TNS_ADMIN /opt/oracle/lib/wallet_NODEAPPDB2
-ENV ORACLE_HOME /opt/oracle/lib/instantclient_12_1
-ENV PATH /opt/oracle/lib/instantclient_12_1:/opt/oracle/lib/wallet_NODEAPPDB2:/opt/oracle/lib/ATPDocker/aone:/opt/oracle/lib/ATPDocker/aone/node_modules:$PATH
-
-RUN cd /opt/oracle/lib/ATPDocker/aone && \
-	npm install oracledb
 EXPOSE 3050
 CMD [ "node", "/opt/oracle/lib/ATPDocker/aone/server.js" ]

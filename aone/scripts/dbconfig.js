@@ -1,5 +1,5 @@
 module.exports= {
-user:"nodeuser",
+user:"admin",
 password:"Autonomousdb123#",
-connectString :"nodeappdb2_high"
+connectString :"jleoow_high"
 }

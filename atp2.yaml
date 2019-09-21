@@ -19,7 +19,7 @@ spec:
         ports:
         - containerPort: 3050 #Endpoint is at port 80 in the container
       imagePullSecrets:
-      - name: ocirsecret
+      - name: jleoow-ocirsecret
 ---
 apiVersion: v1
 kind: Service

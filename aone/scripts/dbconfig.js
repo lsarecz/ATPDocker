@@ -1,5 +1,5 @@
 module.exports= {
 user:"admin",
-password:"Autonomousdb123#",
+password:"InsertYourPasswordHere",
 connectString :"jleoow_high"
 }

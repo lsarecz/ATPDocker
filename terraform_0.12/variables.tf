@@ -334,7 +334,7 @@ variable "master_ol_image_name" {
 }
 
 variable "worker_ol_image_name" {
-  default = "Oracle-Linux-7.5"
+  default = "Oracle-Linux-7.6"
 }
 
 variable "etcd_ol_image_name" {

@@ -18,14 +18,3 @@ data "oci_identity_availability_domains" "ads" {
 output "show-ads" {
   value = data.oci_identity_availability_domains.ads.availability_domains
 }
-
-data "oci_containerengine_cluster_kube_config" "test_cluster_kube_config" {
-  #Required
-  cluster_id = oci_containerengine_cluster.k8s_cluster.id
-}
-
-resource "local_file" "mykubeconfig" {
-  content  = data.oci_containerengine_cluster_kube_config.test_cluster_kube_config.content
-  filename = "./mykubeconfig"
-}
-

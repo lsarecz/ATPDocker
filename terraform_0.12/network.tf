@@ -150,61 +150,24 @@ resource "oci_core_security_list" "LoadBalancerSecList" {
 
 }
 
-resource "oci_core_subnet" "workerSubnetAD1" {
-  availability_domain = "${lookup(data.oci_identity_availability_domains.ads.availability_domains[0],"name")}"
+resource "oci_core_subnet" "workerSubnet" {
   cidr_block          = "${lookup(var.network_cidrs, "workerSubnetAD1")}"
-  display_name        = "workerSubnetAD1"
+  display_name        = "workerSubnet"
   compartment_id      = "${var.compartment_ocid}"
   vcn_id              = "${oci_core_virtual_network.K8SVNC.id}"
   route_table_id      = "${oci_core_route_table.RouteForK8S.id}"
   security_list_ids   = ["${oci_core_security_list.WorkerSecList.id}"]
   dhcp_options_id     = "${oci_core_virtual_network.K8SVNC.default_dhcp_options_id}"
-  dns_label           = "worker1"
+  dns_label           = "worker"
 }
 
-resource "oci_core_subnet" "workerSubnetAD2" {
-  availability_domain = "${lookup(data.oci_identity_availability_domains.ads.availability_domains[1],"name")}"
-  cidr_block          = "${lookup(var.network_cidrs, "workerSubnetAD2")}"
-  display_name        = "workerSubnetAD2"
-  compartment_id      = "${var.compartment_ocid}"
-  vcn_id              = "${oci_core_virtual_network.K8SVNC.id}"
-  route_table_id      = "${oci_core_route_table.RouteForK8S.id}"
-  security_list_ids   = ["${oci_core_security_list.WorkerSecList.id}"]
-  dhcp_options_id     = "${oci_core_virtual_network.K8SVNC.default_dhcp_options_id}"
-  dns_label           = "worker2"
-}
-
-resource "oci_core_subnet" "workerSubnetAD3" {
-  availability_domain = "${lookup(data.oci_identity_availability_domains.ads.availability_domains[2],"name")}"
-  cidr_block          = "${lookup(var.network_cidrs, "workerSubnetAD3")}"
-  display_name        = "workerSubnetAD3"
-  compartment_id      = "${var.compartment_ocid}"
-  vcn_id              = "${oci_core_virtual_network.K8SVNC.id}"
-  route_table_id      = "${oci_core_route_table.RouteForK8S.id}"
-  security_list_ids   = ["${oci_core_security_list.WorkerSecList.id}"]
-  dhcp_options_id     = "${oci_core_virtual_network.K8SVNC.default_dhcp_options_id}"
-  dns_label           = "worker3"
-}
-
-resource "oci_core_subnet" "LoadBalancerSubnetAD1" {
-  availability_domain = "${lookup(data.oci_identity_availability_domains.ads.availability_domains[0],"name")}"
+resource "oci_core_subnet" "LoadBalancerSubnet" {
   cidr_block          = "${lookup(var.network_cidrs, "LoadBalancerSubnetAD1")}"
-  display_name        = "LoadBalancerSubnetAD1"
+  display_name        = "LoadBalancerSubnet"
   compartment_id      = "${var.compartment_ocid}"
   vcn_id              = "${oci_core_virtual_network.K8SVNC.id}"
   route_table_id      = "${oci_core_route_table.RouteForK8S.id}"
   security_list_ids   = ["${oci_core_security_list.LoadBalancerSecList.id}"]
   dhcp_options_id     = "${oci_core_virtual_network.K8SVNC.default_dhcp_options_id}"
-  dns_label           = "loadbalancer1"
-}
-resource "oci_core_subnet" "LoadBalancerSubnetAD2" {
-  availability_domain = "${lookup(data.oci_identity_availability_domains.ads.availability_domains[1],"name")}"
-  cidr_block          = "${lookup(var.network_cidrs, "LoadBalancerSubnetAD2")}"
-  display_name        = "LoadBalancerSubnetAD2"
-  compartment_id      = "${var.compartment_ocid}"
-  vcn_id              = "${oci_core_virtual_network.K8SVNC.id}"
-  route_table_id      = "${oci_core_route_table.RouteForK8S.id}"
-  security_list_ids   = ["${oci_core_security_list.LoadBalancerSecList.id}"]
-  dhcp_options_id     = "${oci_core_virtual_network.K8SVNC.default_dhcp_options_id}"
-  dns_label           = "loadbalancer2"
+  dns_label           = "loadbalancer"
 }

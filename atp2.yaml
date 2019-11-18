@@ -16,10 +16,18 @@ spec:
       - name: atp2
         image: fra.ocir.io/<your_tenancy>/<repo_path>/atp2:latest
         imagePullPolicy: Always
+        volumeMounts:
+         - mountPath: "/opt/oracle/lib/wallet_NODEAPPDB2"
+           name: db-wallet
+           readOnly: true
         ports:
         - containerPort: 3050 #Endpoint is at port 80 in the container
       imagePullSecrets:
       - name: jleoow-ocirsecret
+      volumes:
+        - name: db-wallet
+          secret:
+            secretName: db-wallet
 ---
 apiVersion: v1
 kind: Service

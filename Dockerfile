@@ -14,7 +14,8 @@ COPY ./aone ./ATPDocker/aone
 RUN mv  ./tmp_mods/node_modules ./ATPDocker/aone
 
 RUN mkdir wallet_NODEAPPDB2
-COPY ./CTD_OOW ./wallet_NODEAPPDB2
+# Now using a secret to mount the wallet in the Pod
+# COPY ./CTD_OOW ./wallet_NODEAPPDB2
 
 EXPOSE 3050
 CMD [ "node", "/opt/oracle/lib/ATPDocker/aone/server.js" ]

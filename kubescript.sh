@@ -5,4 +5,3 @@ kubectl delete deployment atp2 --ignore-not-found=true
 kubectl apply -f atp2.yaml
 kubectl get services atp2
 kubectl get pods
-kubectl describe pods
